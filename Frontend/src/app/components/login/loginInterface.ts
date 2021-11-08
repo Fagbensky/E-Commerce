@@ -3,6 +3,9 @@ export interface Login{
     password?: string
 }
 
-export interface LoginError{
-    error?: string
+export interface LoginResponse{
+    access_token: string,
+    token_type: string,
+    expires_in: number,
+    user:string
 }

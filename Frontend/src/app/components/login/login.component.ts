@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
-import { Login, LoginError } from './loginInterface';
+import { TokenService } from 'src/app/services/token.service';
+import { Login, LoginResponse } from './loginInterface';
 
 
 @Component({
@@ -15,7 +17,11 @@ export class LoginComponent implements OnInit {
 
     public error?: string;
 
-  constructor(private auth: AuthService) { }
+  constructor(
+    private auth: AuthService, 
+    private token: TokenService,
+    private router: Router
+    ) { }
 
   ngOnInit(): void {
   }
@@ -27,18 +33,21 @@ export class LoginComponent implements OnInit {
       email: this.email,
       password: this.password
     }
-
-    console.log(login);
     
     this.auth
     .login(login)
     .subscribe(
-      (data) => console.log(data),
+      (data) => this.handleResponse(data),
       (error) => this.handleError(error)
     )
   }
 
-  handleError(error: any){
+  handleResponse(data: LoginResponse){
+    this.token.handleToken(data.access_token);
+    this.router.navigateByUrl('/profile')
+  }
+
+  handleError(error: { error: { error?: string}; }){
     this.error = error.error.error;
   } 
 }

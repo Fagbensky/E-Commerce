@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators'
 import { Login } from '../components/login/loginInterface';
+import { Signup } from '../components/signup/signupInterface';
  
 
 
@@ -26,6 +27,15 @@ export class AuthService {
     const url = `${this.url}/login`
 
     return this.http.post(url, login, httpOptions)
+    .pipe(
+      //catchError(this.handleError)
+    )
+  }
+
+  signup(signup: Signup): Observable<any>{
+    const url = `${this.url}/signup`
+
+    return this.http.post(url, signup, httpOptions)
     .pipe(
       //catchError(this.handleError)
     )
