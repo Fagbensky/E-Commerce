@@ -6,6 +6,10 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
+use Tymon\JWTAuth\Facades\JWTAuth;
+use Tymon\JWTAuth\Exceptions\TokenExpiredException;
+use Tymon\JWTAuth\Exceptions\JWTException;
+use Tymon\JWTAuth\Exceptions\TokenInvalidException;
 
 class AuthController extends Controller
 {
@@ -24,9 +28,12 @@ class AuthController extends Controller
      *
      * @return \Illuminate\Http\JsonResponse
      */
-    public function login()
+    public function login(Request $request)
     {
-        $credentials = request(['email', 'password']);
+        $credentials = $request->validate([
+            'email' => 'required|email|string',
+            'password' => 'required|string'
+        ]);
 
         if (! $token = Auth::attempt($credentials)) {
             return response()->json(['error' => 'Email or Password doesn\'t exist'], 401);
@@ -72,6 +79,13 @@ class AuthController extends Controller
      *
      * @return \Illuminate\Http\JsonResponse
      */
+    // public function logout()
+    // {
+    //     Auth::logout();
+
+    //     return response()->json(['message' => 'Successfully logged out']);
+    // }
+
     public function logout()
     {
         Auth::logout();

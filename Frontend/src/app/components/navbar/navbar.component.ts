@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthRouteService } from 'src/app/services/auth-route.service';
+import { AuthService } from 'src/app/services/auth.service';
 import { TokenService } from 'src/app/services/token.service';
 
 @Component({
@@ -15,7 +16,8 @@ export class NavbarComponent implements OnInit {
   constructor(
     private authRoute: AuthRouteService,
     private router: Router,
-    private token: TokenService
+    private token: TokenService,
+    private auth: AuthService
   ) { }
 
   ngOnInit(): void {
@@ -26,6 +28,7 @@ export class NavbarComponent implements OnInit {
 
   logOut(event: MouseEvent){
     event.preventDefault();
+    this.auth.logout();
     this.token.remove();
     this.authRoute.changeAuthStatus(false);
     this.router.navigateByUrl('/')
