@@ -13,6 +13,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AuthService } from './services/auth.service';
 import { TokenService } from './services/token.service';
+import { AuthRouteService } from './services/auth-route.service';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,7 @@ import { TokenService } from './services/token.service';
     FormsModule,
     HttpClientModule,
   ],
-  providers: [AuthService, TokenService],
+  providers: [AuthService, TokenService, AuthRouteService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

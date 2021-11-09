@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthRouteService } from 'src/app/services/auth-route.service';
 import { AuthService } from 'src/app/services/auth.service';
 import { TokenService } from 'src/app/services/token.service';
 import { Login, LoginResponse } from '../login/loginInterface';
@@ -22,7 +23,8 @@ export class SignupComponent implements OnInit {
   constructor(
     private auth: AuthService,
     private token: TokenService,
-    private router: Router
+    private router: Router,
+    private authRoute: AuthRouteService
     ) { }
 
   ngOnInit(): void {
@@ -48,7 +50,8 @@ export class SignupComponent implements OnInit {
 
   handleResponse(data: LoginResponse){
     this.token.handleToken(data.access_token);
-    this.router.navigateByUrl('/profile')
+    this.authRoute.changeAuthStatus(true);
+    this.router.navigateByUrl('/profile');
   }
 
   handleError(error:any ) {

@@ -35,9 +35,10 @@ export class TokenService {
       if(payload){
         return Object.values(this.iss).indexOf(payload.iss) > -1? true : false;
       }
-    }
+    }else{
       return false;
-    
+    }
+    return false;
   }
 
   payload(token: string | null): loginPayload | void {
@@ -50,9 +51,6 @@ export class TokenService {
   decode(payload: string): loginPayload{
     return JSON.parse(atob(payload));
   }
-
-  loggedIn(){
-    return this.isValid();
-  }
+  
 }
 
