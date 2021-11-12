@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators'
 import { Login } from '../components/login/loginInterface';
+import { PasswordReset } from '../components/password/request-password/resetPasswordInterface';
 import { Signup } from '../components/signup/signupInterface';
 import { TokenService } from './token.service';
  
@@ -55,6 +56,12 @@ export class AuthService {
     }
     this.http.post(url, {} ,logOutHeader)
     .subscribe()
+  }
+
+  sendPasswordReset(data: PasswordReset){
+    const url = `${this.url}/sendPassWordResetLink`
+
+    return this.http.post(url, data, httpOptions)
   }
 
   // Method that handles error
