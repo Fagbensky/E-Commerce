@@ -21,9 +21,10 @@ export class RequestResetComponent implements OnInit {
   }
 
   onSubmit(){
+    this.notify.info('Wait...',{timeout:5000});
     const form: PasswordReset = {
       email: this.email
-    }
+    };
     this.auth.sendPasswordReset(form).subscribe(
       data => this.handleResponse(data),
       error => this.notify.error(error.error.error),
@@ -31,6 +32,7 @@ export class RequestResetComponent implements OnInit {
   };
 
   handleResponse(data: any){
+    this.notify.success(data.data,{timeout:0})
     console.log(data);
     this.email = null;
   }

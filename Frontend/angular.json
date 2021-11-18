@@ -35,7 +35,7 @@
             ],
             "styles": [
               "src/styles.scss",
-              "../node_modules/ng-snotify/styles/material.css",
+              "node_modules/ng-snotify/styles/material.scss",
               "node_modules/bootstrap/dist/css/bootstrap.min.css"
             ],
             "scripts": [
