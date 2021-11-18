@@ -4,6 +4,7 @@ import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators'
 import { Login } from '../components/login/loginInterface';
 import { PasswordReset } from '../components/password/request-password/resetPasswordInterface';
+import { resetPassword } from '../components/password/response-reset/resetPasswordInterface';
 import { Signup } from '../components/signup/signupInterface';
 import { TokenService } from './token.service';
  
@@ -64,26 +65,9 @@ export class AuthService {
     return this.http.post(url, data, httpOptions)
   }
 
-  // Method that handles error
-  private handleError(err: HttpErrorResponse): Observable<never> {
-    // In a real world app, We may send the server to some remote logging infrastructure instead of just logging it to the console.
+  changePassword(data: resetPassword){
+    const url = `${this.url}/resetPassword`
 
-    let errorMessage = '';
-
-    if (err.error instanceof ErrorEvent) {
-
-      // An client-side or network error occurred. Handle it accordingly.
-      errorMessage = `An error occurred: ${err.error.message}`;
-
-    } else {
-
-      // The backend returned an unsuccessful response code.
-      // The response body may contain clues as to what went wrong,
-      errorMessage = `Server returned code: ${err.status}, error message is: ${err.message}`;
-
-    }
-
-    console.error(errorMessage);
-    return throwError(errorMessage)
+    return this.http.post(url, data, httpOptions)
   }
 }

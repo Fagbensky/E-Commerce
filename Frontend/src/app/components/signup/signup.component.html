@@ -9,7 +9,7 @@
           <div class="col-md-10">
             <input type="text" name="name" class="form-control" id="name" aria-describedby="nameHelp"
               placeholder="Firstname Middlename Lastname" [(ngModel)]="name" required />
-            <div class="alert alert-danger" *ngIf="error.name">
+            <div class="text-danger" *ngIf="error.name">
               {{ error.name }}
             </div>
           </div>
@@ -20,7 +20,7 @@
           <div class="col-md-10">
             <input type="email" name="email" class="form-control" id="Email" aria-describedby="emailHelp"
               placeholder="Email here" [(ngModel)]="email" required />
-            <div class="alert alert-danger" *ngIf="error.email">
+            <div class="text-danger" *ngIf="error.email">
               {{ error.email }}
             </div>
           </div>
@@ -39,7 +39,7 @@
           <div class="col-md-10">
             <input type="password" name="password_confirmation" class="form-control" id="password_confirmation"
               placeholder="Make Sure Password is Correct" [(ngModel)]="password_confirmation" required />
-            <div class="alert alert-danger" *ngIf="error.password">
+            <div class="text-danger" *ngIf="error.password">
               {{ error.password }}
             </div>
           </div>
