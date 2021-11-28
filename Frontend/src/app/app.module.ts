@@ -15,6 +15,9 @@ import { AuthService } from './services/auth.service';
 import { TokenService } from './services/token.service';
 import { AuthRouteService } from './services/auth-route.service';
 import { SnotifyModule, SnotifyService, ToastDefaults } from 'ng-snotify';
+import { FooterComponent } from './components/footer/footer.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { CartComponent } from './components/cart/cart.component';
 
 @NgModule({
   declarations: [
@@ -25,20 +28,23 @@ import { SnotifyModule, SnotifyService, ToastDefaults } from 'ng-snotify';
     ProfileComponent,
     RequestResetComponent,
     ResponseResetComponent,
+    FooterComponent,
+    CartComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    SnotifyModule
+    SnotifyModule,
+    FontAwesomeModule
   ],
   providers: [
     AuthService, 
     TokenService, 
     AuthRouteService,
     { provide: 'SnotifyToastConfig', useValue: ToastDefaults},
-    SnotifyService
+    SnotifyService,
   ],
   bootstrap: [AppComponent]
 })
