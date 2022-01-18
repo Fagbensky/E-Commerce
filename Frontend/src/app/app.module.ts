@@ -11,13 +11,20 @@ import { RequestResetComponent } from './components/password/request-password/re
 import { ResponseResetComponent } from './components/password/response-reset/response-reset.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { AuthService } from './services/auth.service';
-import { TokenService } from './services/token.service';
-import { AuthRouteService } from './services/auth-route.service';
+import { AuthService } from './services/login/auth.service';
+import { TokenService } from './services/login/token.service';
+import { AuthRouteService } from './services/login/auth-route.service';
 import { SnotifyModule, SnotifyService, ToastDefaults } from 'ng-snotify';
 import { FooterComponent } from './components/footer/footer.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { CartComponent } from './components/cart/cart.component';
+import { HeroComponent } from './components/homepage/hero/hero.component';
+import { HomepageComponent } from './components/homepage/homepage.component';
+import { ExtraComponent } from './components/homepage/hero/extra/extra.component';
+import { AdsBannerComponent } from './components/homepage/ads-banner/ads-banner.component';
+import { PersonalizedProductsComponent } from './components/homepage/personalized-products/personalized-products.component';
+import { CardsComponent } from './components/shared/cards/cards.component';
+import { AdsbannerService } from './services/homepage/ads/adsbanner.service';
 
 @NgModule({
   declarations: [
@@ -30,6 +37,12 @@ import { CartComponent } from './components/cart/cart.component';
     ResponseResetComponent,
     FooterComponent,
     CartComponent,
+    HeroComponent,
+    HomepageComponent,
+    ExtraComponent,
+    AdsBannerComponent,
+    PersonalizedProductsComponent,
+    CardsComponent,
   ],
   imports: [
     BrowserModule,
@@ -45,6 +58,7 @@ import { CartComponent } from './components/cart/cart.component';
     AuthRouteService,
     { provide: 'SnotifyToastConfig', useValue: ToastDefaults},
     SnotifyService,
+    AdsbannerService
   ],
   bootstrap: [AppComponent]
 })

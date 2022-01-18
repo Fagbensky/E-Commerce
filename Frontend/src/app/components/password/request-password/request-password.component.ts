@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SnotifyService } from 'ng-snotify';
-import { AuthService } from 'src/app/services/auth.service';
+import { AuthService } from 'src/app/services/login/auth.service';
 import { PasswordReset } from './resetPasswordInterface';
 
 @Component({

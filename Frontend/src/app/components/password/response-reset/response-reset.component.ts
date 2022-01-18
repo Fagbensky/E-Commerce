@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { SnotifyService } from 'ng-snotify';
-import { AuthService } from 'src/app/services/auth.service';
+import { AuthService } from 'src/app/services/login/auth.service';
 import { resetPassword, resetPasswordSuccess } from './resetPasswordInterface';
 
 @Component({

@@ -1,16 +1,22 @@
 module.exports = {
-    prefix: '',
-    purge: {
-      content: [
-        './src/**/*.{html,ts}',
-      ]
+  prefix: "",
+  purge: {
+    content: ["./src/**/*.{html,ts}"],
+  },
+  darkMode: "class", // or 'media' or 'class'
+  theme: {
+    extend: {
+      width: {
+        "75vw": "75vw",
+      },
+      colors: {
+        "orange-100": "rgb(255 237 213)",
+        "orange-300": "rgb(253 186 116)",
+      },
     },
-    darkMode: 'class', // or 'media' or 'class'
-    theme: {
-      extend: {},
-    },
-    variants: {
-      extend: {},
-    },
-    plugins: [require('@tailwindcss/forms'),require('@tailwindcss/typography')],
+  },
+  variants: {
+    extend: {},
+  },
+  plugins: [require("@tailwindcss/forms"), require("@tailwindcss/typography")],
 };

@@ -1,0 +1,16 @@
+<div>
+    <p *ngIf="(productDiscount > 0)">
+        {{discount}}
+    </p>
+    <img [src]="imageURL" [alt]="">
+    <h6 class="">
+        {{name}}
+    </h6>
+    <p>
+        {{price}}
+    </p>
+    <p *ngIf="(productDiscount > 0)">
+        {{formerPrice}}
+    </p>
+
+</div>

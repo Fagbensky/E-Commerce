@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthRouteService } from 'src/app/services/auth-route.service';
-import { AuthService } from 'src/app/services/auth.service';
-import { TokenService } from 'src/app/services/token.service';
-import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
+import { AuthRouteService } from 'src/app/services/login/auth-route.service';
+import { AuthService } from 'src/app/services/login/auth.service';
+import { TokenService } from 'src/app/services/login/token.service';
+import { faShoppingCart, faBars } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'navbar',
@@ -13,6 +13,7 @@ import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 export class NavbarComponent implements OnInit {
 
   faShoppingCart = faShoppingCart;
+  faBars = faBars;
 
   public loggedIn ?: boolean;
   
@@ -27,6 +28,16 @@ export class NavbarComponent implements OnInit {
     this.authRoute.authStatus.subscribe(
       value => this.loggedIn = value
     )
+  }
+
+  togggleMenu(){
+    const menu: any = document.getElementById('menu');
+
+    if(menu.classList.contains('hidden')){
+      menu.classList.remove('hidden');
+    }else{
+      menu.classList.add('hidden');
+    }
   }
 
   logOut(event: MouseEvent){

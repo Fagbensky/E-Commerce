@@ -2,10 +2,10 @@ import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http
 import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators'
-import { Login } from '../components/login/loginInterface';
-import { PasswordReset } from '../components/password/request-password/resetPasswordInterface';
-import { resetPassword } from '../components/password/response-reset/resetPasswordInterface';
-import { Signup } from '../components/signup/signupInterface';
+import { Login } from '../../components/login/loginInterface';
+import { PasswordReset } from '../../components/password/request-password/resetPasswordInterface';
+import { resetPassword } from '../../components/password/response-reset/resetPasswordInterface';
+import { Signup } from '../../components/signup/signupInterface';
 import { TokenService } from './token.service';
  
 

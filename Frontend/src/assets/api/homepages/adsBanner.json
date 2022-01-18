@@ -1,0 +1,24 @@
+[
+    {
+        "adsId": 1,
+        "adsTitle": "New arrivals <br> are now in!",
+        "adsButton": "Show Collection",
+        "adsDiscountAmount": 0,
+         "adsImages": "adPicture1"
+    },
+    {
+        "adsId": 2,
+        "adsTitle": "Basic t-shirts <br> $29,99",
+        "adsButton": "Show Collection",
+        "adsDiscount": false,
+        "adsDiscountAmount": 0,
+         "adsImages": "adPicture2"
+    },{
+        "adsId": 3,
+        "adsTitle": "New arrivals <br> are now in!",
+        "adsButton": "Show Collection",
+        "adsDiscount": true,
+        "adsDiscountAmount": 50,
+         "adsImages": "adPicture3"
+    }
+]

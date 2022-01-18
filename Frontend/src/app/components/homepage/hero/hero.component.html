@@ -1,0 +1,46 @@
+<div class="image w-screen">
+  <div class="px-16">
+    <h1 class="text-5xl font-bold pb-16 pt-32 px-16">
+      Sale of the <br />
+      summer <br />
+      collection
+    </h1>
+    <div class="flex items-center uppercase text-xs pb-60 px-16 ">
+      <i
+        class="mr-5 p-3 rounded-full bg-yellow-500 text-white h-4 w-4 flex items-center justify-center font-bold"
+      >
+        <fa-icon [icon]="arrowRight" class=""></fa-icon>
+      </i>
+      Shop now
+    </div>
+  </div>
+</div>
+<div class="flex">
+    <div
+      class="py-8 px-16 -mt-24 flex justify-around bg-white text-black hero-extra w-75vw rounded-tr-3xl"
+    >
+      <app-extra
+        [icon]="shipping"
+        title="Free Shipping"
+        paragraph="On Purchase over $199"
+      ></app-extra>
+      <app-extra
+        [icon]="smile"
+        title="99% Satisfied Customers"
+        paragraph="Our Client's opinions <br > speak for themselves"
+      ></app-extra>
+      <app-extra
+        [icon]="shield"
+        title="Originality Guaranteed"
+        paragraph="30 days warranty for each <br > product from our store"
+      ></app-extra>
+    </div>
+    <div class="-mt-24 flex">
+        <div class="mt-4 ml-10">
+            <fa-icon [icon]="arrowLeft" class="direction"></fa-icon>
+        </div>
+        <div class="mt-4 ml-2">
+            <fa-icon [icon]="arrowRight" class="direction"></fa-icon>
+        </div>
+    </div>
+</div>

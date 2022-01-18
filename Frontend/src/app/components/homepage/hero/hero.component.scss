@@ -1,0 +1,13 @@
+.image {
+    background-image: url("/assets/images/homepage/joao-silas-SfkLX6fUObk-unsplash.png");
+    color: #fff;
+    background-size: cover;
+}
+
+.direction{
+    background-color: rgba(255, 255, 255, 0.225);
+    @apply text-white hover:text-black ;
+    @apply hover:bg-white;
+    @apply p-4;
+    @apply rounded-sm;
+}

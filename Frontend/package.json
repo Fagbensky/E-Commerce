@@ -5,6 +5,7 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
+    
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
@@ -25,7 +26,6 @@
     "@fortawesome/free-solid-svg-icons": "^5.15.4",
     "@tailwindcss/forms": "^0.3.4",
     "@tailwindcss/typography": "^0.4.1",
-    "bootstrap": "^5.1.3",
     "ng-snotify": "^9.0.1",
     "rxjs": "~6.6.0",
     "tslib": "^2.3.0",

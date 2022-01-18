@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthRouteService } from 'src/app/services/auth-route.service';
-import { AuthService } from 'src/app/services/auth.service';
-import { TokenService } from 'src/app/services/token.service';
+import { AuthRouteService } from 'src/app/services/login/auth-route.service';
+import { AuthService } from 'src/app/services/login/auth.service';
+import { TokenService } from 'src/app/services/login/token.service';
 import { Login, LoginResponse } from './loginInterface';
 
 
@@ -47,7 +47,7 @@ export class LoginComponent implements OnInit {
   handleResponse(data: LoginResponse){
     this.token.handleToken(data.access_token);
     this.authRoute.changeAuthStatus(true);
-    this.router.navigateByUrl('/profile');
+    this.router.navigateByUrl('/');
   }
 
   handleError(error: { error: { error?: string}; }){
