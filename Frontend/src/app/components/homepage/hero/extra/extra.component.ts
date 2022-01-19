@@ -11,10 +11,12 @@ export class ExtraComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+
   }
 
   @Input() title?: string;
   @Input() paragraph?: string;
   @Input() icon?: any;
+
 
 }

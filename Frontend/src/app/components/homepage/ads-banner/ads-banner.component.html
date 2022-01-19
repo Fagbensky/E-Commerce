@@ -1,5 +1,5 @@
 <div>
-    <div class="" *ngIf="adsBanner$ | async as adsBanners" class=" grid grid-cols-7 gap-4 px-32 my-8 ">
+    <div class="" *ngIf="adsBanner$ | async as adsBanners" class=" grid grid-cols-7 gap-4 px-32 my-14 ">
         <div *ngFor="let adsBanner of adsBanners; let i=index;" [class]="classStyes[i]">
             <div [style.backgroundImage]="adsBanner.adsImages" class="bg-cover relative"> 
                 <div style="background-color: rgba(0, 0, 0, 0.293); " >

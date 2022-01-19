@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { tap } from 'rxjs/operators';
 import { PersonalizedProjectService } from 'src/app/services/homepage/personalizedProject/personalized-project.service';
 
 @Component({
@@ -14,9 +13,6 @@ export class PersonalizedProductsComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  personProducts$ = this.PersonProductService.personProducts$
-    .pipe(
-      tap(data => (console.log("Request: ", JSON.stringify(data)))),
-    );
+  personProducts$ = this.PersonProductService.personProducts$;
 
 }

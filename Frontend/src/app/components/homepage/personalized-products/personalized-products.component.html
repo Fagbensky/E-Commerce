@@ -1,19 +1,19 @@
 <div class="px-32">
     <div class="flex justify-between items-center">
-        <h3 class="text-lg ">
+        <h3 class="text-2xl text-gray-900 font-light">
             Selected just for you
         </h3>
         <button class="topButton">
             {{ "Show More" | uppercase }}
         </button>
     </div>
-    <div *ngIf="personProducts$ | async as personProducts">
-        <div *ngFor="let personProduct of personProducts">
+    <div *ngIf="personProducts$ | async as personProducts" class="grid grid-cols-4 my-14 gap-x-12">
+        <div *ngFor="let personProduct of personProducts" > 
             <app-cards
-            [name]="personProduct.productName"
-            [price]="personProduct.productPrice"
-            [discount]="personProduct.productDiscount"
-            [image]="personProduct.productImage"
+            [productName]="personProduct.productName"
+            [productPrice]="personProduct.productPrice"
+            [productDiscount]="personProduct.productDiscount"
+            [productImage]="personProduct.productImage"
             >
             </app-cards>
         </div>

@@ -7,34 +7,43 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class CardsComponent implements OnInit {
 
-  constructor() { }
-
-  ngOnInit(): void {
+  constructor() { 
+    
   }
 
-  @Input('name') productName: string = '';
-  @Input('price') productPrice?: number;
-  @Input('discount') productDiscount?: any;
-  @Input('image') productImage?: string = '';
+  ngOnInit(): void {
+    this.prePrice = this.productPrice;
+    this.price = this.calcPrice(this.productPrice, this.productDiscount);
+    this.formerPrice = this.productPrice;
+    this.name = this.productName;
+    this.discount = `${this.productDiscount}%` 
+    this.imageURL = `/assets/images/homepage/products/${this.productImage}.png`;
+  }
+
+  @Input() productName?: string;
+  @Input() productPrice?: number;
+  @Input() productDiscount?: any;
+  @Input() productImage?: string = '';
 
 
-  prePrice?: number = this.productPrice;
-  price?: number = this.calcPrice(this.productPrice, this.productDiscount);
-  name = this.productName;
-  formerPrice = this.productPrice;
-  discount?: string = `${this.productDiscount}$`;
-  imageURL = `/assets/images/homepage/products/${this.productImage}.png`;
+  prePrice?: number ;
+  price?: number;
+  name?: string;
+  formerPrice?: number;
+  discount?: string;
+  imageURL?: string;
 
+  private calcPrice(productPrice: any, productDiscount: any): number {
 
-    private calcPrice(productPrice: any, productDiscount: any): number {
-      if(productDiscount == 0) {
-        productDiscount = 100;
-      }
-
-      let curPrice: number = (productPrice * (productDiscount / 100));
-
-      return curPrice;
+    if (productDiscount == 0) {
+      return productPrice;
 
     }
+
+    let curPrice: number = productPrice - (productPrice * (productDiscount / 100));
+
+    return curPrice;
+
+  }
 
 }
