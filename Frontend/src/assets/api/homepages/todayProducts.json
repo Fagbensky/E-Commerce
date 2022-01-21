@@ -1,0 +1,31 @@
+[
+    
+    {
+        "productId": 3,
+        "productName": "Basic Slim FIt T-Shirt",
+        "productPrice": 79.99,
+        "productDiscount": 0,
+        "productImage": "slimFit.png"
+    },
+    {
+        "productId": 4,
+        "productName": "Loose Textured T-Shirt",
+        "productPrice": 119.99,
+        "productDiscount": 0,
+        "productImage": "looseTextured.png"
+    },
+    {
+        "productId": 1,
+        "productName": "T-Shirt Summer Vibes",
+        "productPrice": 119.99,
+        "productDiscount": 30,
+        "productImage": "summerVibes.png"
+    },
+    {
+        "productId": 2,
+        "productName": "Loose Knit 3/4 Sleeve",
+        "productPrice": 119.99,
+        "productDiscount": 0,
+        "productImage": "knitSleeve.png"
+    }
+]

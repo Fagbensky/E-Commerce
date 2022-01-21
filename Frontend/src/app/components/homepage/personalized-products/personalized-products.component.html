@@ -7,7 +7,7 @@
             {{ "Show More" | uppercase }}
         </button>
     </div>
-    <div *ngIf="personProducts$ | async as personProducts" class="grid grid-cols-4 my-14 gap-x-12">
+    <div *ngIf="personProducts$ | async as personProducts" class="grid grid-cols-4 my-14 gap-x-12 ">
         <div *ngFor="let personProduct of personProducts" > 
             <app-cards
             [productName]="personProduct.productName"

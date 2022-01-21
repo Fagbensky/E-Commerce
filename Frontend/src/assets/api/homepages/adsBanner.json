@@ -4,7 +4,7 @@
         "adsTitle": "New arrivals <br> are now in!",
         "adsButton": "Show Collection",
         "adsDiscountAmount": 0,
-         "adsImages": "adPicture1"
+         "adsImages": "adPicture1.png"
     },
     {
         "adsId": 2,
@@ -12,13 +12,13 @@
         "adsButton": "Show Collection",
         "adsDiscount": false,
         "adsDiscountAmount": 0,
-         "adsImages": "adPicture2"
+         "adsImages": "adPicture2.png"
     },{
         "adsId": 3,
         "adsTitle": "New arrivals <br> are now in!",
         "adsButton": "Show Collection",
         "adsDiscount": true,
         "adsDiscountAmount": 50,
-         "adsImages": "adPicture3"
+         "adsImages": "adPicture3.png"
     }
 ]

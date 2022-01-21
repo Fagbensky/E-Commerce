@@ -17,7 +17,7 @@ export class CardsComponent implements OnInit {
     this.formerPrice = this.productPrice;
     this.name = this.productName;
     this.discount = `${this.productDiscount}%` 
-    this.imageURL = `/assets/images/homepage/products/${this.productImage}.png`;
+    this.imageURL = `/assets/images/homepage/products/${this.productImage}`;
   }
 
   @Input() productName?: string;

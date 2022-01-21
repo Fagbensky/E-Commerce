@@ -1,9 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthRouteService } from 'src/app/services/login/auth-route.service';
 import { AuthService } from 'src/app/services/login/auth.service';
 import { TokenService } from 'src/app/services/login/token.service';
-import { faShoppingCart, faBars } from '@fortawesome/free-solid-svg-icons';
+import { faShoppingCart, faBars, faUser, faSearch } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'navbar',
@@ -12,10 +12,15 @@ import { faShoppingCart, faBars } from '@fortawesome/free-solid-svg-icons';
 })
 export class NavbarComponent implements OnInit {
 
-  faShoppingCart = faShoppingCart;
-  faBars = faBars;
+  shoppingCart = faShoppingCart;
+  bars = faBars;
+  user = faUser;
+  search = faSearch;
 
-  public loggedIn ?: boolean;
+
+  public loggedIn?: boolean;
+  public showSearchBar: boolean = false;
+  @ViewChild('searchBar') searchBar:any;
   
   constructor(
     private authRoute: AuthRouteService,
@@ -28,6 +33,16 @@ export class NavbarComponent implements OnInit {
     this.authRoute.authStatus.subscribe(
       value => this.loggedIn = value
     )
+  }
+
+  toggleSearchBar() {
+    this.showSearchBar = !this.showSearchBar;
+    if (this.showSearchBar)
+      // use setTimeout to allow *ngIf to display searchBar before calling setFocus
+      setTimeout(() => {
+        if (this.searchBar) this.searchBar.setFocus();
+      })
+
   }
 
   togggleMenu(){

@@ -21,6 +21,7 @@ time, mark, audio, video {
 	vertical-align: baseline;
 }
 
-@import 'tailwindcss/base';
-@import 'tailwindcss/components';
-@import 'tailwindcss/utilities';
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@tailwind variants;

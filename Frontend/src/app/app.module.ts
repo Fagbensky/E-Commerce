@@ -25,6 +25,10 @@ import { AdsBannerComponent } from './components/homepage/ads-banner/ads-banner.
 import { PersonalizedProductsComponent } from './components/homepage/personalized-products/personalized-products.component';
 import { CardsComponent } from './components/shared/cards/cards.component';
 import { AdsbannerService } from './services/homepage/ads/adsbanner.service';
+import { ReasonsComponent } from './components/homepage/reasons/reasons.component';
+import { ItemsComponent } from './components/homepage/reasons/items/items.component';
+import { TodaysProductComponent } from './components/homepage/todays-product/todays-product.component';
+import { NewsletterBannerComponent } from './components/homepage/newsletter-banner/newsletter-banner.component';
 
 @NgModule({
   declarations: [
@@ -43,6 +47,10 @@ import { AdsbannerService } from './services/homepage/ads/adsbanner.service';
     AdsBannerComponent,
     PersonalizedProductsComponent,
     CardsComponent,
+    ReasonsComponent,
+    ItemsComponent,
+    TodaysProductComponent,
+    NewsletterBannerComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,9 +1,6 @@
 module.exports = {
-  prefix: "",
-  purge: {
-    content: ["./src/**/*.{html,ts}"],
-  },
-  darkMode: "class", // or 'media' or 'class'
+  content: ["./src/**/*.{js,jsx,ts,tsx,vue,html}"],
+  darkMode: "media", // or 'media' or 'class'
   theme: {
     extend: {
       width: {
@@ -18,5 +15,10 @@ module.exports = {
   variants: {
     extend: {},
   },
-  plugins: [require("@tailwindcss/forms"), require("@tailwindcss/typography")],
+  plugins: [
+    require("@tailwindcss/forms"),
+    require("@tailwindcss/typography"),
+    require("@tailwindcss/aspect-ratio"),
+    require("@tailwindcss/line-clamp"),
+  ],
 };

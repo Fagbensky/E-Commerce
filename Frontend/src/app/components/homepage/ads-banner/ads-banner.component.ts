@@ -20,7 +20,7 @@ export class AdsBannerComponent implements OnInit {
       map(adsBanners =>
         adsBanners.map(adsBanner => ({
           ...adsBanner,
-          adsImages: `url(/assets/images/homepage/adBanner/${adsBanner.adsImages}.png)`
+          adsImages: `url(/assets/images/homepage/adBanner/${adsBanner.adsImages})`
 
         }) as AdsBanner)
       )
