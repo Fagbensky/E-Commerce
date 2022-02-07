@@ -1,6 +1,6 @@
-export interface Login{
-    email?: string,
-    password?: string
+export class Login{
+    public email?: string;
+    public password?: string;
 }
 
 export interface LoginResponse{

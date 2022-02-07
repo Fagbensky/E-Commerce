@@ -1,34 +1,61 @@
-<div class="">
+<div class="backGround">
+  <div class="boxBackGround">
+    <fa-icon [icon]="cancel" class="cancelButton" (click)="removeLogin()"></fa-icon>
+    <h2 class="titleText">Log In</h2>
     <div class="">
+      <form novalidate (ngSubmit)="onSubmit()" [formGroup]="loginForm">
         <div class="">
-            Log In
+          <div class="">
+            <input type="email" class="inputText"
+              id="Email" aria-describedby="emailHelp" placeholder="Email" formControlName="email" [ngClass]="{
+                'is-invalid':
+                  (loginForm.controls.email.touched ||
+                    loginForm.controls.email.dirty) &&
+                  !loginForm.controls.email.valid
+              }" />
+            <span class="errorMessage">
+              <span *ngIf="
+                  loginForm.controls.email.errors?.required &&
+                  (loginForm.controls.email.touched ||
+                    loginForm.controls.email.dirty)
+                " class="">
+                Please enter your email address.
+              </span>
+              <span *ngIf="
+                  loginForm.controls.email.errors?.email &&
+                  (loginForm.controls.email.touched ||
+                    loginForm.controls.email.dirty)
+                ">
+                Please enter a valid email address.
+              </span>
+            </span>
+          </div>
         </div>
         <div class="">
-            <form #loginForm = ngForm (ngSubmit)= "onSubmit()">
-              <div class="" *ngIf="error">
-                {{error}}
-              </div>
-                <div class="">
-                  <label for="Email" class="">Email address</label>
-                  <div class="">                    
-                    <input type="email" name="email" class="" id="Email" aria-describedby="emailHelp" placeholder="Email here" [(ngModel)]="email" required>
-                  </div>
-                </div>
-                <div class=""> 
-                  <label for="Password" class="">Password</label>
-                  <div class="col-md-10">
-                    <input type="password" name="password" class="" id="Password" placeholder="Password here" [(ngModel)]="password" required>
-                  </div>
-                </div>
-                <button [disabled]="!loginForm.valid" type="submit" class="">Submit</button>
-                <div class=""><div>
-                  Don't have an Account? <a routerLink="/signup" class="" >Sign Up</a>
-                </div>
-                <div class="ms-auto">
-                  <a class="" routerLink="/password-reset">Reset Password</a>
-                </div>
-              </div>
-              </form>
+          <div class="">
+            <input type="password" class="inputText"
+              id="Password" placeholder="Password" formControlName="password" />
+          </div>
         </div>
+        <button [disabled]="!loginForm.valid" type="submit" class="button"
+          [ngClass]="{
+            buttonEnable: loginForm.valid,
+            'bg-orange-300': !loginForm.valid
+          }">
+          Sign In
+        </button>
+        <div class="flex justify-between pb-4">
+          <div class="text-xs">
+            Don't have an Account?
+            <a href="#" (click)="addSubmit($event)" class="link">Sign
+              Up</a>
+          </div>
+          <div class="text-xs">
+            <a class="link" href="#" (click)="addRequest($event)">Reset
+              Password</a>
+          </div>
+        </div>
+      </form>
     </div>
+  </div>
 </div>

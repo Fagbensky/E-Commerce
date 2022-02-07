@@ -1,57 +1,116 @@
-  <div class="">
-    <div class="">SignUp Here</div>
-
+<div class="backGround">
+  <div class="boxBackGround">
+    <fa-icon [icon]="cancel" class="cancelButton" (click)="removeSignup()"></fa-icon>
+    <h2 class="titleText">Create an Account and <br /> Shop for Fun</h2>
     <div class="">
-      <form #signupForm="ngForm" (ngSubmit)="onSubmit()">
+      <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
         <div class="">
-          <label for="name" class="">Fullname</label>
+          <input type="text" class="inputText"
+            id="firstName" aria-describedby="firstNameHelp" placeholder="First Name" formControlName="firstName" />
+          <div class="errorMessage">
+            <span *ngIf="
+                signupForm.get('firstName')!.errors?.required &&
+                (signupForm.get('firstName')!.touched ||
+                  signupForm.get('firstName')!.dirty)
+              ">
+              Enter your First Name.
+            </span>
+          </div>
+        </div>
+
+        <div class="">
           <div class="">
-            <input type="text" name="name" class="" id="name" aria-describedby="nameHelp"
-              placeholder="Firstname Middlename Lastname" [(ngModel)]="name" required />
-            <div class="" *ngIf="error.name">
-              {{ error.name }}
+            <input type="text" class="inputText"
+              id="lastName" aria-describedby="lastNameHelp" placeholder="Last Name" formControlName="lastName" />
+            <div class="errorMessage">
+              <span *ngIf="
+                  signupForm.get('lastName')!.errors?.required &&
+                  (signupForm.get('lastName')!.touched ||
+                    signupForm.get('lastName')!.dirty)
+                ">
+                Enter your Last Name.
+              </span>
             </div>
           </div>
         </div>
 
-
         <div class="">
-          <label for="Email" class="">Email address</label>
-          <div class="">
-            <input type="email" name="email" class="" id="Email" aria-describedby="emailHelp"
-              placeholder="Email here" [(ngModel)]="email" required />
-            <div class="" *ngIf="error.email">
-              {{ error.email }}
+          <input type="email" class="inputText" id="Email"
+            aria-describedby="emailHelp" placeholder="Email" formControlName="email" />
+          <div class="errorMessage">
+            <span *ngIf="
+                signupForm.get('email')!.errors?.required &&
+                (signupForm.get('email')!.touched ||
+                  signupForm.get('email')!.dirty)
+              ">
+              Enter your Email Address.
+            </span>
+            <span *ngIf="
+                signupForm.get('email')!.errors?.email &&
+                (signupForm.get('email')!.touched ||
+                  signupForm.get('email')!.dirty)
+              ">
+              Enter a valid Email Address.
+            </span>
+          </div>
+        </div>
+
+        <div class="" formGroupName="passwordGroup">
+          <div>
+            <input type="password" name="password"
+              class="inputText" id="Password"
+              placeholder="Password" formControlName="password" />
+            <div class="errorMessage">
+              <span *ngIf="
+                  signupForm.get('passwordGroup.password')!.errors?.required &&
+                  (signupForm.get('passwordGroup.password')!.touched ||
+                    signupForm.get('passwordGroup.password')!.dirty)
+                ">
+                Enter a password.
+              </span>
+              <span *ngIf="
+                  signupForm.get('passwordGroup.password')!.errors?.minlength &&
+                  (signupForm.get('passwordGroup.password')!.touched ||
+                    signupForm.get('passwordGroup.password')!.dirty)
+                ">
+                Password must be 6 characters long.
+              </span>
+            </div>
+          </div>
+
+          <div>
+            <input type="password" name="password_confirmation"
+              class="inputText" id="password_confirmation"
+              placeholder="Confirm Password" formControlName="password_confirmation" />
+            <div class="errorMessage">
+              <span *ngIf="
+                  signupForm.get('passwordGroup.password_confirmation')!.errors?.required &&
+                  (signupForm.get('passwordGroup.password_confirmation')!.touched ||
+                    signupForm.get('passwordGroup.password_confirmation')!.dirty)
+                ">
+                Confirm your password.
+              </span>
+              <span *ngIf="
+                  signupForm.get('passwordGroup')!.errors?.match && !(signupForm.get('passwordGroup.password_confirmation')!.errors?.required)
+                ">
+                Password must match.
+              </span>
             </div>
           </div>
         </div>
 
-        <div class="">
-          <label for="Password" class="">Password</label>
-          <div class="">
-            <input type="password" name="password" class="form-control" id="Password" placeholder="Password here"
-              [(ngModel)]="password" required />
-          </div>
-        </div>
-
-        <div class="">
-          <label for="password_confirmation" class="">Confirm Password</label>
-          <div class="">
-            <input type="password" name="password_confirmation" class="" id="password_confirmation"
-              placeholder="Make Sure Password is Correct" [(ngModel)]="password_confirmation" required />
-            <div class="" *ngIf="error.password">
-              {{ error.password }}
-            </div>
-          </div>
-        </div>
-
-        <button [disabled]="!signupForm.valid" type="submit" class="">
-          Submit
+        <button [disabled]="!signupForm.valid" type="submit" class="buttonEnable"
+          [ngClass]="{
+            buttonEnable: signupForm.valid,
+            'bg-orange-300': !signupForm.valid
+          }">
+          Sign Up
         </button>
-        <div class="">
+        <div class="text-xs">
           Already have an account?
-          <a routerLink="/login" class="">Login</a>
+          <a href="#" (click)="addLogin($event)" class="link">Login</a>
         </div>
       </form>
     </div>
   </div>
+</div>

@@ -4,7 +4,7 @@ import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators'
 import { Login } from '../../components/login/loginInterface';
 import { PasswordReset } from '../../components/password/request-password/resetPasswordInterface';
-import { resetPassword } from '../../components/password/response-reset/resetPasswordInterface';
+import { ResetPassword } from '../../components/password/response-reset/resetPasswordInterface';
 import { Signup } from '../../components/signup/signupInterface';
 import { TokenService } from './token.service';
  
@@ -31,20 +31,12 @@ export class AuthService {
 
   login(login: Login): Observable<any>{
     const url = `${this.url}/login`;
-
-    return this.http.post(url, login, httpOptions)
-    .pipe(
-      //catchError(this.handleError)
-    )
+    return this.http.post(url, login, httpOptions);
   }
 
   signup(signup: Signup): Observable<any>{
     const url = `${this.url}/signup`;
-
-    return this.http.post(url, signup, httpOptions)
-    .pipe(
-      //catchError(this.handleError)
-    )
+    return this.http.post(url, signup, httpOptions);
   }
 
   logout(){
@@ -65,7 +57,7 @@ export class AuthService {
     return this.http.post(url, data, httpOptions)
   }
 
-  changePassword(data: resetPassword){
+  changePassword(data: ResetPassword){
     const url = `${this.url}/resetPassword`
 
     return this.http.post(url, data, httpOptions)

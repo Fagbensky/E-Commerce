@@ -50,13 +50,15 @@ class AuthController extends Controller
     public function signup(Request $request)
     {
         $credentials = $request->validate([
-            'name' => 'required|string',
+            'firstName' => 'required|string',
+            'lastName' => 'required|string',
             'email' => 'required|email|string|unique:users,email',
             'password' => ' required|string|confirmed'
         ]);
 
         User::create([
-            'name' => $credentials['name'],
+            'first_name' => $credentials['firstName'],
+            'last_name' => $credentials['lastName'],
             'email' => $credentials['email'],
             'password' => bcrypt($credentials['password'])
         ]);
@@ -116,7 +118,7 @@ class AuthController extends Controller
             'access_token' => $token,
             'token_type' => 'bearer',
             'expires_in' => Auth::factory()->getTTL() * 60,
-            'user' => auth()->user()->name
+            'user' => auth()->user()->first_name
         ]);
     }
 }

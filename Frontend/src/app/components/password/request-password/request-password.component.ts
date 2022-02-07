@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { faTimes } from '@fortawesome/free-solid-svg-icons';
 import { SnotifyService } from 'ng-snotify';
 import { AuthService } from 'src/app/services/login/auth.service';
 import { PasswordReset } from './resetPasswordInterface';
@@ -10,31 +12,43 @@ import { PasswordReset } from './resetPasswordInterface';
 })
 export class RequestResetComponent implements OnInit {
 
-  email?: string| null;
+  cancel = faTimes
+
+  resetForm!: FormGroup;
+
+  email = new PasswordReset();
+  
+  @Output() disRequest = new EventEmitter();
 
   constructor(
     private auth: AuthService,
-    private notify: SnotifyService
+    private notify: SnotifyService,
+    private fb: FormBuilder,
   ) { }
 
   ngOnInit(): void {
+    this.resetForm = this.fb.group({
+      email: ['', [Validators.required, Validators.email]]
+    })
   }
 
   onSubmit(){
-    this.notify.info('Wait...',{timeout:5000});
-    const form: PasswordReset = {
-      email: this.email
-    };
-    this.auth.sendPasswordReset(form).subscribe(
+    this.notify.info('Wait...',{timeout:1500});
+    this.auth.sendPasswordReset(this.resetForm.value).subscribe(
       data => this.handleResponse(data),
-      error => this.notify.error(error.error.error),
+      error => this.notify.error(error.error.error, { timeout: 1500}),
     );
   };
 
   handleResponse(data: any){
-    this.notify.success(data.data,{timeout:0})
-    console.log(data);
-    this.email = null;
+    this.notify.success(data.data,{timeout:1500})
+    this.resetForm.patchValue({
+      email: ''
+    });
+  }
+
+  removeRequest() {
+    this.disRequest.emit();
   }
 
 }

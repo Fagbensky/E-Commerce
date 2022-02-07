@@ -4,6 +4,7 @@ import { AuthRouteService } from 'src/app/services/login/auth-route.service';
 import { AuthService } from 'src/app/services/login/auth.service';
 import { TokenService } from 'src/app/services/login/token.service';
 import { faShoppingCart, faBars, faUser, faSearch } from '@fortawesome/free-solid-svg-icons';
+import { SnotifyService } from 'ng-snotify';
 
 @Component({
   selector: 'navbar',
@@ -17,6 +18,10 @@ export class NavbarComponent implements OnInit {
   user = faUser;
   search = faSearch;
 
+  loginPopup: boolean = false;
+  signupPopup: boolean = false;
+  requestPopup: boolean = false;
+
 
   public loggedIn?: boolean;
   public showSearchBar: boolean = false;
@@ -26,7 +31,8 @@ export class NavbarComponent implements OnInit {
     private authRoute: AuthRouteService,
     private router: Router,
     private token: TokenService,
-    private auth: AuthService
+    private auth: AuthService,
+    private notify: SnotifyService
   ) { }
 
   ngOnInit(): void {
@@ -60,6 +66,46 @@ export class NavbarComponent implements OnInit {
     this.auth.logout();
     this.token.remove();
     this.authRoute.changeAuthStatus(false);
-    this.router.navigateByUrl('/')
+    this.notify.success(`Logged Out`, { timeout: 1500 });
+    this.router.navigateByUrl('/');
+  }
+
+
+  addLogin(event: MouseEvent) {
+    event.preventDefault();
+    this.signupPopup = false;
+    this.requestPopup = false;
+    this.loginPopup = true;
+    document.body.style.overflow = 'hidden';
+  }
+
+  addSignup(event: MouseEvent) {
+    event.preventDefault();
+    this.loginPopup = false;
+    this.requestPopup = false;
+    this.signupPopup = true;
+    document.body.style.overflow = 'hidden';
+  }
+
+  addRequest() {
+    this.loginPopup = false;
+    this.signupPopup = false;
+    this.requestPopup = true;
+    document.body.style.overflow = 'hidden';
+  }
+
+  removeLogin() {
+    document.body.style.removeProperty('overflow');
+    this.loginPopup = false;
+  }
+
+  removeSignup() {
+    document.body.style.removeProperty('overflow');
+    this.signupPopup = false;
+  }
+
+  removeRequest() {
+    document.body.style.removeProperty('overflow');
+    this.requestPopup = false;
   }
 }

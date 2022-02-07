@@ -1,4 +1,13 @@
 <nav class="absolute top-0 right-0 left-0">
+  <div class="h-screen w-screen z-50" *ngIf="loginPopup">
+    <app-login (disLogin)="removeLogin()" (onSignup)="addSignup($event)" (request)="addRequest()"></app-login>
+  </div>
+  <div class="h-screen w-screen z-50" *ngIf="signupPopup">
+    <app-signup (disSignup)="removeSignup()" (login)="addLogin($event)" ></app-signup>
+  </div>
+  <div class="h-screen w-screen z-50" *ngIf="requestPopup">
+    <app-request-reset (disRequest)="removeRequest()" ></app-request-reset>
+  </div> 
   <div
     class="mx-32 md:px-4 md:flex md:justify-between md:items-center text-white font-bold mt-4"
   >
@@ -34,7 +43,7 @@
           debounce="700"
         />
         <button (click)="toggleSearchBar()" ion-button icon-only>
-          <fa-icon [icon]="search" class="mr-12" *ngIf="!loggedIn"></fa-icon>
+          <fa-icon [icon]="search" class="mr-12"></fa-icon>
         </button>
       </div>
       <a class="mr-12" routerLink="cart">
@@ -45,8 +54,8 @@
           <fa-icon [icon]="user" class="" routerLink="cart"></fa-icon>
         </button>
         <div class="dropdown-content">
-          <a class="" routerLink="login" *ngIf="!loggedIn">Log in</a>
-          <a class="" routerLink="signup" *ngIf="!loggedIn">Sign Up</a>
+          <a class="" href="#" (click)="addLogin($event)" *ngIf="!loggedIn">Log in</a>
+          <a class="" href="#" (click)="addSignup($event)"*ngIf="!loggedIn">Sign Up</a>
           <a class="" routerLink="orders" *ngIf="loggedIn">Orders</a>
           <a class="" routerLink="profile" *ngIf="loggedIn">Profile</a>
           <a class="" href="#" (click)="logOut($event)" *ngIf="loggedIn">Log Out</a>

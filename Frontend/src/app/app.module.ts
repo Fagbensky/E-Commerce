@@ -9,7 +9,7 @@ import { SignupComponent } from './components/signup/signup.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { RequestResetComponent } from './components/password/request-password/request-password.component';
 import { ResponseResetComponent } from './components/password/response-reset/response-reset.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AuthService } from './services/login/auth.service';
 import { TokenService } from './services/login/token.service';
@@ -55,6 +55,7 @@ import { NewsletterBannerComponent } from './components/homepage/newsletter-bann
   imports: [
     BrowserModule,
     AppRoutingModule,
+    ReactiveFormsModule,
     FormsModule,
     HttpClientModule,
     SnotifyModule,

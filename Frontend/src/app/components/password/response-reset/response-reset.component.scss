@@ -1,0 +1,14 @@
+.backGround{
+    background-color: rgba(0, 0, 0, 0.232);
+    @apply absolute top-0 bottom-0 left-0 right-0 z-20
+    ;
+}
+
+.boxBackGround{
+    background-color: #fff;
+    @apply absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 p-10 w-[32rem] z-30;
+}
+
+.buttonEnable{
+    @apply hover:bg-orange-500 bg-orange-400;
+}

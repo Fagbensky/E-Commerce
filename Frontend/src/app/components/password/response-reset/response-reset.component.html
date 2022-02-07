@@ -1,38 +1,121 @@
-<div class="">
-  <div class="">
-    <div class="">Reset Password</div>
-    <div class="">
-      <form #resetPassForm="ngForm" (ngSubmit)="onSubmit()">
-        <div class="">
-          <label for="Email" class="">Email address</label>
+<div class="relative h-screen w-screen z-50">
+  <div class="backGround">
+    <div class="boxBackGround grid justify-items-center">
+      <h2 class="text-center my-4 font-medium text-2xl">Reset Password</h2>
+      <div class="">
+        <form [formGroup]="resetPassForm" (ngSubmit)="onSubmit()">
           <div class="">
-            <input type="email" name="email" class="form-control" id="Email" placeholder="E-Mail here" [(ngModel)]="email" required />
-            <div class="text-danger" *ngIf="error.email">
-              {{ error.email }}
+            <input
+              type="email"
+              name="email"
+              class="rounded-full border-zinc-400 focus:border-black hover:border-black w-80"
+              id="email"
+              placeholder="Email"
+              formControlName="email"
+            />
+            <div class="block h-6 text-red-500 px-4 text-sm">
+              <span
+                *ngIf="
+                  resetPassForm.get('email')!.errors
+                    ?.required &&
+                  (resetPassForm.get('email')!.touched ||
+                    resetPassForm.get('email')!.dirty)
+                "
+              >
+                Please enter your email address.
+              </span>
+              <span
+                *ngIf="
+                  resetPassForm.get('email')!.errors
+                    ?.email &&
+                  (resetPassForm.get('email')!.touched ||
+                    resetPassForm.get('email')!.dirty)
+                "
+              >
+                Please enter a valid email address.
+              </span>
             </div>
           </div>
-        </div>
-        <div class="">
-          <label for="Password" class="">Password</label>
-          <div class="">
-            <input type="password" name="password" class="form-control" id="Password" placeholder="Password here"
-              [(ngModel)]="password" required />
-          </div>
-        </div>
-        <div class="">
-          <label for="Password" class="">Confirm Password</label>
-          <div class="">
-            <input type="password" name="confirmPassword" class="" id="confirmPassword"
-              placeholder="Confirm Password here" [(ngModel)]="confirmPassword" required />
-            <div class="text-danger" *ngIf="error.password">
-              {{ error.password }}
+          <div class="" formGroupName="passwordGroup">
+            <div class="rounded-full border-zinc-400 focus:border-black hover:border-black w-80">
+              <input
+                type="password"
+                name="password"
+                class="rounded-full border-zinc-400 focus:border-black hover:border-black w-80"
+                id="Password"
+                placeholder="Password"
+                formControlName="password"
+              />
+              <div class="block h-6 text-red-500 px-4 text-sm">
+                <span
+                  *ngIf="
+                    resetPassForm.get('passwordGroup.password')!.errors
+                      ?.required &&
+                    (resetPassForm.get('passwordGroup.password')!.touched ||
+                      resetPassForm.get('passwordGroup.password')!.dirty)
+                  "
+                >
+                  Enter a password.
+                </span>
+                <span
+                  *ngIf="
+                    resetPassForm.get('passwordGroup.password')!.errors
+                      ?.minlength &&
+                    (resetPassForm.get('passwordGroup.password')!.touched ||
+                      resetPassForm.get('passwordGroup.password')!.dirty)
+                  "
+                >
+                  Password must be 6 characters long.
+                </span>
+              </div>
+            </div>
+            <div class="">
+              <input
+                type="password"
+                name="confirmPassword"
+                class="rounded-full border-zinc-400 focus:border-black hover:border-black w-80"
+                id="confirmPassword"
+                placeholder="Confirm Password"
+                formControlName="password_confirmation"
+              />
+              <div class="block h-6 text-red-500 px-4 text-sm">
+                <span
+                  *ngIf="
+                    resetPassForm.get('passwordGroup.password_confirmation')!
+                      .errors?.required &&
+                    (resetPassForm.get('passwordGroup.password_confirmation')!
+                      .touched ||
+                      resetPassForm.get('passwordGroup.password_confirmation')!
+                        .dirty)
+                  "
+                >
+                  Confirm your password.
+                </span>
+                <span
+                  *ngIf="
+                    resetPassForm.get('passwordGroup')!.errors?.match &&
+                    !resetPassForm.get('passwordGroup.password_confirmation')!
+                      .errors?.required
+                  "
+                >
+                  Password must match.
+                </span>
+              </div>
             </div>
           </div>
-        </div>
-        <button [disabled]="!resetPassForm.valid" type="submit" class="">
-          Change Password
-        </button>
-      </form>
+          <button
+            [disabled]="!resetPassForm.valid"
+            type="submit"
+            class="my-6 p-3 rounded-full w-80 text-white font-medium"
+            [ngClass]="{
+              buttonEnable: resetPassForm.valid,
+              'bg-orange-300': !resetPassForm.valid
+            }"
+          >
+            Change Password
+          </button>
+        </form>
+      </div>
     </div>
   </div>
 </div>

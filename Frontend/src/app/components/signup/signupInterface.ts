@@ -1,6 +1,7 @@
-export interface Signup{
-    email?: string,
-    name?: string,
-    password?: string,
-    password_confirmation?: string
+export class Signup{
+    email?: string;
+    firstName?: string;
+    lastName?: string;
+    password?: string;
+    password_confirmation?: string;
 }

@@ -1,0 +1,37 @@
+.backGround{
+    background-color: rgba(0, 0, 0, 0.232);
+    @apply md:absolute md:top-0 md:bottom-0 md:left-0 md:right-0 z-20;
+
+}
+
+.boxBackGround{
+    @apply md:absolute md:top-1/2 md:left-1/2 md:-translate-x-1/2 md:-translate-y-1/2 md:p-10 md:w-[32rem] md:z-30 md:grid md:justify-items-center md:bg-white;
+}
+
+.buttonEnable{
+    @apply md:hover:bg-orange-500 md:bg-orange-400;
+}
+
+.titleText{
+    @apply md:text-center md:my-4 md:font-medium md:text-2xl;
+}
+
+.cancelButton{
+    @apply md:grid md:justify-self-end md:cursor-pointer;
+}
+
+.inputText{
+    @apply md:rounded-full md:border-zinc-400 md:focus:border-black md:hover:border-black w-80;
+}
+
+.errorMessage{
+    @apply md:block md:h-6 md:text-red-500 md:px-4 md:text-sm;
+}
+
+.button{
+    @apply md:my-6 md:p-3 md:rounded-full md:w-80 md:text-white md:font-medium;
+}
+
+.link{
+    @apply md:text-blue-400 md:hover:text-blue-600 md:focus:text-blue-600;
+}
